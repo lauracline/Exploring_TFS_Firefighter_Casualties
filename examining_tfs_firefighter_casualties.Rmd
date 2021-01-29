@@ -16,7 +16,7 @@ In 2019, the *Association of Workers’ Compensation Board of Canada* (AWCBC) re
 
 In this paper, we will analyze the number of firefighter casualties in Canada’s largest municipal fire department – the Toronto Fire Service (TFS). The TFS defines “firefighter casualties” as on-duty deaths and injuries. In 2019, the TFS employed 3,233 firefighters across eighty-three fire stations and responded to 133,081 dispatch alarms [@citeOpenDataToronto]. We will study the number of TFS firefighter casualties between 2011 and 2019 and use exploratory data analysis to discover potential predictor variables including the type of dispatch call, the time-of-the-year, and the extent of the fire when the first unit arrived on scene. Unlike the majority of fire departments in Canada, the TFS did not experience an increase in firefighter casualties between 2011 to 2019. However, I learned through exploratory data analysis that firefighters were more likely to be injured or killed at residential structure fires, in the winter months,  and when the fire had spread beyond the object of origin. These findings are extremely interesting and important because it identifies potential hazards related to these variables that may increase a firefighter's risk of being injured or killed. Therefore, the TFS can use this data to control for potential risks and hazards by taking precautionary measures to either reduce the chance of occurrence or the impact of the hazard. 
 
-The code and data supporting the analysis is avaliable on my [GitHub repository](https://github.com/lauracline/TFS_Fire_Incident_Data_2011_2019_Firefighter_Casulties) for this project.
+The code and data supporting the analysis is avaliable on my [GitHub repository](https://github.com/lauracline/Exploring_TFS_Firefighter_Casualties) for this project.
 
 The remainder of this paper is structured as follows: Section 2 discusses the data and data ethics; Section 3 explores the variables: dispatch alarm type, month, and extent of fire; and finally, Section 4 discusses the study’s findings and some weaknesses. 
 
@@ -205,13 +205,13 @@ fire_incidents_data_clean_times %>%
   guides(color = FALSE) # Removes legend 
 ```
 
-The graph for the number of TFS casualties per month does not match the graph for the number of fire incidents per month. Unlike the Figure _ where the number of fire incidents followed a gradual and inverted-U shaped relationship, the number of firefighter casualties’ spikes throughout the year. First, the number of firefighter casualties gradually decrease from 33 to 10 casualties between January and June. However, the graph illustrates that there is a sharp spike in firefighter casualties in January, March and May.  Secondly, the number of casualties increase again after June before plateauing around 20 casualties per month until November. Lastly, firefighter casualties sharply increase again between November and January. 
+The graph for the number of TFS casualties per month does not match the graph for the number of fire incidents per month. Unlike the (Figure \@ref(fig:fig1)) where the number of fire incidents followed a gradual and inverted-U shaped relationship, the number of firefighter casualties spikes throughout the year. First, the number of firefighter casualties gradually decrease from 33 to 10 casualties between January and June. However, the graph illustrates that there is a sharp spike in firefighter casualties in January, March and May.  Secondly, the number of casualties increase again after June before plateauing around 20 casualties per month until November. Lastly, firefighter casualties sharply increase again in December. Consequently, the TFS experienced the majority of firefighter casualties during the winter months (December to March) and experienced the lowest number of firefighter casualties in June. These results are extremely interesting because they contradict Kesler's argument that more firefighter casualties occur in the summer months [@citeKesler]. 
 
-Although the number of firefighter casualties do increase in the summer months as I predicted, I did expect the number of casualties to peak in January and sharply spike in March and May. The graph appears to spike when it enters a new season (i.e., spring, summer and winter).  I cannot explain or find any research on this interesting phenomenon. If the data were available, we could also examine the types of casualties per month to learn what is causing these trends [@citeKesler]. 
+Although the number of firefighter casualties do increase in the summer months as I predicted, I did expect the number of casualties to peak in January and sharply spike in March and May. The peak in May may be explained by more firefighter incidents occur in this month, but does not explain the significant increases in January, March, or July. The graph appears to spike when it enters a new season (i.e., spring, summer and winter).  I cannot explain or find any research on this interesting phenomenon. If the data was available, we could also examine the types of casualties per month to learn what is causing these trends. 
 
 ## Total Fire Incidents per Extent of Fire
 
-Next, I hypothesize that the number of firefighter casualties will increase if the fire has spread beyond the object-of-origin when the first fire engine units arrive. I argue that once the fire begins to spread, it will increase the risk of casualties because the fire will be hotter, larger, and more likely to cause structural collapse. 
+Next, I will examine if the number of firefighter casualties increases when the fire has spread beyond the object-of-origin when the first fire engine units arrive. I argue that once the fire begins to spread, it will increase the risk of casualties because the fire will be hotter, larger, and more likely to cause structural collapse. 
 
 First, we will examine the most common fire incident state when firefighters first arrive on scene. I will be using a horizontal bar graph to effectively visualize the number of fire incidents per fire extent (Figure \@ref(fig:fig3)). 
 
@@ -259,7 +259,7 @@ second_barchart %>%
   guides(color = FALSE) # Removes legend 
 ```
 
-The bar plot above demonstrates that firefighter casualties are more likely to occur when the fire has spread beyond the room of origin (> 50 casualties), confined to part of the room of origin (> 40 casualties), spread to other floors (> 40 casualties), and spread beyond the building of origin (> 25 casualties). Therefore, the results reveal that firefighters are more likely to be injured to killed when the fire is no longer contained to specific object or room. The increase in casualties is likely caused by the firefighting tactics used for multi-room structural fire environments. When the fire spreads beyond the object of origin or one room, firefighters must perform search-and-rescue operations on a larger area, increased risk of heat stress because “faster fires burn hotter”, higher risk of structural collapse, and other risks associated with entering a burning structure [@citeKerber]. 
+The bar plot above demonstrates that firefighter casualties are more likely to occur when the fire has spread beyond the room of origin (> 50 casualties), confined to part of the room of origin (> 40 casualties), spread to other floors (> 40 casualties), and spread beyond the building of origin (> 25 casualties). Therefore, the results reveal that firefighters are more likely to be injured to killed when the fire is no longer contained to specific object or room. The increase in casualties is likely caused by the firefighting tactics used for multi-room structural fire environments. When the fire spreads beyond the object of origin or one room, firefighters must perform search-and-rescue operations on a larger area. This puts firefighters at an increased risk of heat stress because “faster fires burn hotter”, there is an increased risk of structural collapse, and multiple other hazards associated with entering a burning structure [@citeKerber]. 
 
 ## Total Firefighter Casualties per Year
 
@@ -291,5 +291,7 @@ fire_incidents_data_clean_times %>%
 ```
 
 # Discussion and Results 
+
+In conclusion, 
 
 # References 
