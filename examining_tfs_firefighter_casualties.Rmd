@@ -121,9 +121,9 @@ The table demonstrates that the TFS responded to 17,536 fire incidents and there
 
 ## Top Ten CAD Event Types with the Highest Number Firefighter Casualties
 
-We will create a table (Table \@ref(tab:winter)) that lists the number of firefighter casualties per CAD (911 dispatch system) event type. A CAD event type describes the nature of “what is happening” at an incident. Typically, each incident type is associated with a specific response plan that establishes the number and types of resources initially required for mitigating the incident and the fire engine units that must be dispatched to that event. I chose to only show the top ten CAD event types on the table because there are 115 different TFS CAD event codes to describe fire incidents alone, which will make the table too long for this report. Furthermore, the majority of CAD event types did not have one firefighter casualty between 2011 to 2019 [@citeAPCO]. The translations for these CAD event codes can be found on the [City of Toronto's Active Fire Incidents](https://www.toronto.ca/community-people/public-safety-alerts/alerts-notifications/toronto-fire-active-incidents/) list [@citeTFAI]. 
+We will create a table (Table \@ref(tab:winter)) that lists the number of firefighter casualties per CAD (911 dispatch system) event type. A CAD event type describes the nature of “what is happening” at an incident. Typically, each incident type is associated with a specific response plan that establishes the number and types of resources initially required for mitigating the incident and the fire engine units that must be dispatched to that event. We chose to only show the top ten CAD event types on the table because there are 115 different TFS CAD event codes to describe fire incidents alone, which will make the table too long for this report. Furthermore, the majority of CAD event types did not have one firefighter casualty between 2011 to 2019 [@citeAPCO]. The translations for these CAD event codes can be found on the [City of Toronto's Active Fire Incidents](https://www.toronto.ca/community-people/public-safety-alerts/alerts-notifications/toronto-fire-active-incidents/) list [@citeTFAI]. 
 
-There was no missing data because every entity had a value in the `TFS_Firefighter_Casualties` and `CAD_Event_Type` columns. I could have also used the `Final_Incident_Type` feature which is the final CAD Event Type recorded by the dispatcher, but the value for every fire incident was `Fire`. Thus, the `Final_Incident_Type` feature did not provide any meaningful insights. The data was analyzed using R [@citeR], tidyverse [@citeTidyverse] and kableExtra [@citekableExtra].
+There was no missing data because every entity had a value in the `TFS_Firefighter_Casualties` and `CAD_Event_Type` columns. We could have also used the `Final_Incident_Type` feature which is the final CAD Event Type recorded by the dispatcher, but the value for every fire incident was `Fire`. Thus, the `Final_Incident_Type` feature did not provide any meaningful insights. The data was analyzed using R [@citeR], tidyverse [@citeTidyverse] and kableExtra [@citekableExtra].
 
 ```{r winter, echo=FALSE}
 # Create a table showing all the total number of casualties per CAD event type between 2011 to 2019 
@@ -146,9 +146,9 @@ The table reveals that about 50% of firefighter casualties ($(114 + 12/253)*100$
 
 ## Total Fire Incidents per Month
 
-Next, we will explore if firefighter casualty rates increase based on the time-of-year. Previous research in Richard M. Kesler et al,'s *Effects of firefighting hood design, laundering and doffing on smoke protection, heat stress, and wearability* (2021) argues that there is a significant increase in on-duty firefighter heat-related medical emergencies in the summer months (June to September) due to the high temperatures and humid weather conditions, the heavy equipment and uniforms, and temperatures inside a burning building easily reaching several hundred degrees celsius [@citeKesler]. Consequently, I will examine if the TFS experienced similar seasonal-related correlations in firefighter casualties between 2011 and 2019. 
+Next, we will explore if firefighter casualty rates increase based on the time-of-year. Previous research in Richard M. Kesler et al,'s *Effects of firefighting hood design, laundering and doffing on smoke protection, heat stress, and wearability* (2021) argues that there is a significant increase in on-duty firefighter heat-related medical emergencies in the summer months (June to September) due to the high temperatures and humid weather conditions, the heavy equipment and uniforms, and temperatures inside a burning building easily reaching several hundred degrees celsius [@citeKesler]. Consequently, we will examine if the TFS experienced similar seasonal-related correlations in firefighter casualties between 2011 and 2019. 
 
-I analyzed the number of firefighter casualties per time-of-year by grouping the number of TFS fire incidents per month between 2011 and 2019 (Figure \@ref(fig:fig1)). I used the `TFS_Alarm_Time` feature (the timestamp of when the TFS was notified of the incident) to discover the month the fire incident took place [@citeTFS2]. 
+We analyzed the number of firefighter casualties per time-of-year by grouping the number of TFS fire incidents per month between 2011 and 2019 (Figure \@ref(fig:fig1)). We used the `TFS_Alarm_Time` feature (the timestamp of when the TFS was notified of the incident) to discover the month the fire incident took place [@citeTFS2]. 
 
 There was no missing data because every entity had a value in the`TFS_Alarm_Time` feature. The `TFS_Alarm_Time` feature was also converted from a character vector to datetime for this analysis. The data was analyzed using R [@citeR], tidyverse [@citeTidyverse], lubridate [@citeLubridate] and ggplot2[@citeGGplot2]. 
 
@@ -207,13 +207,13 @@ fire_incidents_data_clean_times %>%
 
 The graph for the number of TFS casualties per month does not match the graph for the number of fire incidents per month. Unlike the (Figure \@ref(fig:fig1)) where the number of fire incidents followed a gradual and inverted-U shaped relationship, the number of firefighter casualties spikes throughout the year. First, the number of firefighter casualties gradually decrease from 33 to 10 casualties between January and June. However, the graph illustrates that there is a sharp spike in firefighter casualties in January, March and May.  Secondly, the number of casualties increase again after June before plateauing around 20 casualties per month until November. Lastly, firefighter casualties sharply increase again in December. Consequently, the TFS experienced the majority of firefighter casualties during the winter months (December to March) and experienced the lowest number of firefighter casualties in June. These results are extremely interesting because they contradict Kesler's argument that more firefighter casualties occur in the summer months [@citeKesler]. 
 
-Although the number of firefighter casualties do increase in the summer months as I predicted, I did expect the number of casualties to peak in January and sharply spike in March and May. The peak in May may be explained by more firefighter incidents occur in this month, but does not explain the significant increases in January, March, or July. The graph appears to spike when it enters a new season (i.e., spring, summer and winter).  I cannot explain or find any research on this interesting phenomenon. If the data was available, we could also examine the types of casualties per month to learn what is causing these trends. 
+Although the number of firefighter casualties do increase in the summer months as Kesler et al. predicted, the data also peaks in January and sharply spike in March and May. The peak in May may be explained by more firefighter incidents occur in this month, but does not explain the significant increases in January, March, or July. The graph appears to spike when it enters a new season (i.e., spring, summer and winter).  We cannot explain or find any research on this interesting phenomenon. If the data was available, we could also examine the types of casualties per month to learn what is causing these trends. 
 
 ## Total Fire Incidents per Extent of Fire
 
-Next, I will examine if the number of firefighter casualties increases when the fire has spread beyond the object-of-origin when the first fire engine units arrive. I argue that once the fire begins to spread, it will increase the risk of casualties because the fire will be hotter, larger, and more likely to cause structural collapse. 
+Next, We will examine if the number of firefighter casualties increases when the fire has spread beyond the object-of-origin when the first fire engine units arrive. We argue that once the fire begins to spread, it will increase the risk of casualties because the fire will be hotter, larger, and more likely to cause structural collapse. 
 
-First, we will examine the most common fire incident state when firefighters first arrive on scene. I will be using a horizontal bar graph to effectively visualize the number of fire incidents per fire extent (Figure \@ref(fig:fig3)). 
+First, we will examine the most common fire incident state when firefighters first arrive on scene. We will be using a horizontal bar graph to effectively visualize the number of fire incidents per fire extent (Figure \@ref(fig:fig3)). 
 
 All fire incidents that were missing `extent_of_fire` values were removed for this analysis, which removed ~6,000 fire incidents entities. The data was analyzed using R [@citeR], tidyverse [@citeTidyverse], and ggplot2 [@citeGGplot2]. 
 
@@ -292,6 +292,14 @@ fire_incidents_data_clean_times %>%
 
 # Discussion and Results 
 
-In conclusion, 
+In this paper, we explored multiple features correlated with firefighter casualties at the Toronto Fire Services between 2011 and 2019. We used exploratory data analysis to analyze the Fire Incidents dataset, summarize its main characteristics, and visualize the results. We found that CAD event types, the time-of-year, and the extent of the fire when firefighters first arrived on scene all had a significant effect on increasing firefighter casualties. 
+
+First, in (Table \@ref(tab:winter)) we found that firefighters were significantly more likely to be injured or killed at residential and commercial/industrial fires. Although these results could be explained by these types of fires being more common, it may also be due to the proper firefighter responses to these dispatch alarms. Firefighters are expected to perform earch-and-rescue operations for these types of fires which may expose them to very hazardous situations and risks. 
+
+Second, (Figure \@ref(fig:fig1)) and (Figure \@ref(fig:fig2)), we found that the majority of firefighters were injured during the winter months (December to March) and only a small number of firefighters in June. Although the charts display a slight increase in casualties during the summer months (July to September), the visualizations contradict previous scholarly research that more firefighters are injured or killed in the summer months do the heat exhaustion. 
+
+Third, (Figure \@ref(fig:fig3)) and (Figure \@ref(fig:fig4)), 
+
+## Limitations and Future Work
 
 # References 
