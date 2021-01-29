@@ -281,7 +281,7 @@ fire_incidents_data_clean_times %>%
   scale_x_continuous(breaks = seq(2011, 2019, by = 1)) + # Removes decimals from the x-axis scale so it is more clear which month the number of calls belongs to
   labs( # Add labels 
     title = "Number of TFS Firefighter Casulties Decreased Between 2011 and 2019",
-    subtitle = "Despite the large spike 2013, the number of firefighter casualties has gradually decreased between 2011 to 2019.",
+    subtitle = "Despite the large spike 2013, the number of firefighter casualties has gradually \ndecreased between 2011 to 2019.",
     caption = "(data from 'opendatatoronto' package)",
     x = "Year",
     y = "# of TFS Firefighter Casulties") +
